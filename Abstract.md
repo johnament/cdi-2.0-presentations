@@ -122,5 +122,9 @@ CDI 1.1/1.2:
 - All
 All classes discovered, that match managed beans, are CDI beans
 - Annotated
-Classes
+Classes discovered require a scope
 - None
+Classes in this archive are not discovered
+
+It was found that annotated was too limiting, but all is too wide open, for performance reasons.  In order to compensate, and not break backwards compatibility, we introduced a <trim/> tag when using all discovery, that limits the found beans to those with bean defining annotations and those with scopes.
+
