@@ -1,0 +1,7 @@
+{
+  "name": "presentation-cdi-20-new-noteworthy",
+  "version": "0.0.0",
+  "dependencies": {
+    "prism": "gh-pages"
+  }
+}

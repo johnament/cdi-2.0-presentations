@@ -1,0 +1,163 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title CDI 2.0 New & Noteworthy
+
+    link(rel='stylesheet', type='text/css', href='build/build.css')
+
+  body
+
+    article
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h1 CDI 2.0 NEW & NOTEWORTHY
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Something something... something goes here
+        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a>
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 The New
+        p The New:
+        ul
+          li Event Enhancements
+          li Java 8 Baseline
+          li Enhanced Configuration Capabilities in Extensions
+          li Applying interceptors to produced beans
+          
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Event Enhancements
+        h3 Event Ordering
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Event Enhancements
+        h3 Programmatic Events
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Event Enhancements
+        h3 Asynchronous Events
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Event Enhancements
+        h3 Asynchronous Events & Context Activation
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Java 8 Alignment
+        h3 CDI 2.0 is heavily aligned to Java 8.  Many new features are based on Java 8 semantics, functional interfaces used heavily to write simple code, instances can be streamed.
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Java 8 Alignment
+        h3 Bean Configuration
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Java 8 Alignment
+        h3 Instance Enhancements
+
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 The Noteworthy
+        p The Noteworthy:
+          ul
+            li Stereotypes
+            li Alternatives
+            li Decorators
+            li Portable Extensions
+            li Bean Discovery
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Controlling the Classpath
+        h3 You can disable discovery, and explicitly add beans
+        pre
+          code.language-javascript.
+            try(SeContainer container = SeContainerInitializer
+              .newInstance()
+              .addPackages(Bean.class)
+              .disableDiscovery()
+              .initialize()) {
+            }
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Highly configurable
+        h3 Enable Alternatives, Stereotypes, Decorators, Extensions
+        pre
+          code.language-javascript.
+            SeContainerInitializer
+              .newInstance()
+              .addExtensions()
+              .enableDecorators()
+              .selectAlternativeStereotypes()
+              .selectAlternatives()
+              .addProperty()
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2.bullet Request Context Management
+        br
+        h4 Is context management a developer concern or a framework concern?
+        h4.bullet We couldn't decide!
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Request Context Management
+        br
+        h4 Built in bean for starting and stopping request contexts
+        pre
+          code.language-javascript.
+            @Inject RequestContextController requestContextController;
+
+            boolean started = requestContextController.activate();
+
+            // do some work
+
+            if(started) requestContextController.deactivate();
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Request Context Management
+        br
+        h4 Built in interceptor to handle it automatically
+        pre
+          code.language-javascript.
+            @ActivateRequestContext
+            public void doSomeWork() {
+
+            }
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2.bullet Threading and Events
+        br
+        h4 Async events allow custom executors
+        h4 Synchronous events are always within the same thread
+        h4.bullet So how do we leverage both?
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2.bullet Threading and Events
+        br
+        h4 Sync Events May need Request Scope to be Active
+        pre
+          code.language-javascript.
+            @Inject Event<Pojo> pojoEvent;
+            @ActivateRequestContext
+            public void sender() {
+                pojoEvent.fire(new Pojo("pojo"));
+            }
+
+            public void syncReceiver(@Observes Pojo pojo) {
+
+            }
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2.bullet Threading and Events
+        br
+        h4 Async events allow custom executors
+        pre
+          code.language-javascript.
+            public void sender() {
+                pojoEvent.fireAsync(new Pojo("pojo"), 
+                  NotificationOptions.ofExecutor(new ForkJoinPool(size)));
+            }
+
+            public void asyncReceiver(@ObservesAsync Pojo pojo) {
+
+            }
+
+    script(src='build/build.js')
