@@ -15,9 +15,20 @@ html
         h1 CDI 2.0 NEW & NOTEWORTHY
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
-        h2 Something something... something goes here
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a>
+        h2 CDI 2.0
+        h3 CDI 2.0 (JSR-365) has been in development for a few years now
+        h3 In depth information can be found at http://cdi-spec.org/
 
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Other Sessions
+        h3 Stop by Thursday, 2:50 in Room 7
+        h3 How to use CDI 2.0 in a Java SE Environment
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Slide Materials
+        h3 Available on my github - 
+        h3 https://github.com/johnament
+        
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 The New
         p The New:
@@ -74,6 +85,12 @@ html
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Java 8 Alignment
         h3 Bean Configuration
+        p CDI 2.0 introduces a builder-based configuration system for portable extensions
+        pre
+          code.lanaguage-javascript.
+            afterBeanDiscovery.addBean()
+                .produceWith(instance -> new Object())
+                .destroyWith((o, cc) -> {});
         
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Java 8 Alignment
@@ -89,15 +106,124 @@ html
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Java 8 Alignment
         h3 Instance Enhancements
+        p As well as a positive isResolved method
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
-          h2 The Noteworthy
-          p The Noteworthy:
-            ul
-              li Stereotypes
-              li Alternatives
-              li Decorators
-              li Portable Extensions
-              li Bean Discovery
-            
+        h2 Java 8 Alignment
+        h3 Repeating Qualifiers
+        p CDI now supports repeating qualifiers
+        p They act in an additive fashion
+        p As a result, you need to use getAnnotations
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 The Noteworthy
+        p The Noteworthy:
+          ul
+            li Stereotypes
+            li Alternatives
+            li Decorators
+            li Bean Discovery
+            li Portable Extensions
+                
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Stereotypes
+        h3 Create annotations that match your needs
+        p Its normal to create annotations that represent how your code is supposed to work
+        p However, these annotations aren't built in
+        p Makes sense, since they're meant to fit into your business domain
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Stereotypes
+        p You can create a generic Component stereotype
+        pre
+          code.language-javascript.
+            @Dependent
+            @Stereotype
+            @Target(TYPE)
+            @Retention(RUNTIME)
+            public @interface Component {}
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Stereotypes
+        p Or very specific
+        pre
+          code.language-javascript.
+            @ApplicationScoped
+            @Transactional
+            @Stereotype
+            @Target(TYPE)
+            @Retention(RUNTIME)
+            public @interface Service {}
+          
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Stereotypes
+        p Including alternatives, and qualifiers
+        pre
+          code.language-javascript.
+            @ApplicationScoped
+            @Alternative
+            @Mock
+            @Stereotype
+            @Target(TYPE)
+            @Retention(RUNTIME)
+            public @interface MockService {}
+          
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Alternatives
+        h3 Deployment time bean swapping
+        p Alternatives are enabled per bean-archive in beans.xml
+        p Replacing the bean they extend from
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Alternatives
+        h3 Global Alternatives
+        p Alternatives also support enablement via Priority, making them global
+        p No XML changes required, they are simply active
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Decorators
+        h3 Delegating to existing beans
+        p Decorators are meant for delegating work to the existing class
+        p While adding custom logic
+        p Also supports activation via beans.xml and Priority
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Bean Discovery
+        h3 CDI's bean discovery has gone through some radical changes in its revisions
+        h3 CDI 1.0 required an empty/minimal beans.xml to be present for it to be considered.
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Bean Discovery
+        h3 Java EE 7 introduces CDI 1.1 and CDI always on
+        h3 CDI added a bean-discovery-mode to help developers control what was located
+        h3 Added support for all - every valid bean was created
+        h3 annotated - bean defining annotations were required - qualifiers weren't in this list
+        h3 none - turn off CDI for this archive
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Bean Discovery
+        h3 CDI 2.0 introduces two new concepts for bean discovery
+        h3 Trimmed archives (bean-discovery-mode=all, <trim/> tag) discovered all beans
+        h3 But removed classes that had no qualifiers, scopes, alternatives, decorators, etc
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Bean Discovery for Java SE
+        h3 Java SE has its own rules around discovery - stop by on Thursday!
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Portable Extensions
+        h3 Observe CDI container start up events 
+        ul
+          li BeforeBeanDiscovery
+          li ProcessAnnotatedType
+          li AfterTypeDiscovery
+          li ProcessInjectionTarget / ProcessProducer
+          li ProcessInjectionPoint
+          li ProcessBeanAttributes
+          li ProcessBean
+          li ProcessObserverMethod
+          li AfterBeanDiscovery
+          li AfterDeploymentValidation
+          
+        
     script(src='build/build.js')
