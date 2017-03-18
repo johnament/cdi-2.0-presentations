@@ -123,6 +123,7 @@ html
             li Alternatives
             li Decorators
             li Bean Discovery
+            li Unmanaged Beans
             li Portable Extensions
                 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
@@ -210,6 +211,17 @@ html
         h2 Bean Discovery for Java SE
         h3 Java SE has its own rules around discovery - stop by on Thursday!
         
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Unmanaged Beans
+        h3 Sometimes you want to inject into a bean, but not actually inject that bean
+        pre
+          code.language-javascript.
+            Unmanaged&lt;MyBean&gt; unmanaged = new Unmanaged<>(MyBean.class);
+            UnmanagedInstance&lt;MyBean&gt; instance = unmanaged.newInstance();
+            MyBean myBean  = instance.produce().inject().postConstruct().get();
+            // do some work with it
+            instance.preDestroy().dispose();
+
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Portable Extensions
         h3 Observe CDI container start up events 
