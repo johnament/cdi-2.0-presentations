@@ -87,7 +87,7 @@ html
         h3 Bean Configuration
         p CDI 2.0 introduces a builder-based configuration system for portable extensions
         pre
-          code.lanaguage-javascript.
+          code.language-javascript.
             afterBeanDiscovery.addBean()
                 .produceWith(instance -> new Object())
                 .destroyWith((o, cc) -> {});
@@ -97,7 +97,7 @@ html
         h3 Instance Enhancements
         p Instances now support direct streaming, to represent that they are a collection of beans
         pre
-          code.languaga-javascript.
+          code.language-javascript.
             instance
               .stream()
               .findFirst()
@@ -204,7 +204,7 @@ html
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Bean Discovery
         h3 CDI 2.0 introduces two new concepts for bean discovery
-        h3 Trimmed archives (bean-discovery-mode=all, <trim/> tag) discovered all beans
+        h3 Trimmed archives (bean-discovery-mode=all, &lt;trim/&gt; tag) discovered all beans
         h3 But removed classes that had no qualifiers, scopes, alternatives, decorators, etc
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
@@ -216,11 +216,40 @@ html
         h3 Sometimes you want to inject into a bean, but not actually inject that bean
         pre
           code.language-javascript.
-            Unmanaged&lt;MyBean&gt; unmanaged = new Unmanaged<>(MyBean.class);
+            Unmanaged&lt;MyBean&gt; unmanaged = new Unmanaged&lt;&gt;(MyBean.class);
             UnmanagedInstance&lt;MyBean&gt; instance = unmanaged.newInstance();
             MyBean myBean  = instance.produce().inject().postConstruct().get();
             // do some work with it
             instance.preDestroy().dispose();
+          
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Unmanaged Beans
+        h3 While this isn't a lot of code, it adds extra boiler plate.  So you can have a one time..
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Unmanaged Beans
+        pre
+          code.language-javascript.
+            public class Unmanageable&lt;T&gt; implements AutoCloseable{
+              private final Unmanaged.UnmanagedInstance&lt;T&gt; instance;
+              public Unmanageable(Class&lt;T&gt; clazz) {
+                this.instance = new Unmanaged&lt;T&gt;(clazz).newInstance()
+                        .produce().inject().postConstruct();
+              }
+              public T get() { return this.instance.get(); }
+              @Override public void close() {
+                this.instance.preDestroy().dispose();
+              }
+            }
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Unmanaged Beans
+        h3 Into a bit of syntactic sugar
+        pre
+          code.language-javascript.
+            try(Unmanageable&lt;SomeBean&gt; unmanageable = new Unmanageable&lt;&gt;(SomeBean.class)) {
+                SomeBean bean = unmanageable.get();
+            }
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Portable Extensions

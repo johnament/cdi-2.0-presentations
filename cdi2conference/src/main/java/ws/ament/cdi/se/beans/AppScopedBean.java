@@ -5,9 +5,6 @@ import javax.enterprise.context.control.ActivateRequestContext;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
-/**
- * Created by johnament on 3/6/17.
- */
 @ApplicationScoped
 @ActivateRequestContext
 public class AppScopedBean {
@@ -21,7 +18,7 @@ public class AppScopedBean {
         instance
                 .stream()
                 .findFirst()
-                .ifPresent(bean -> bean.doSomething());
+                .ifPresent(bean -> bean.sayHello());
     }
 
     public String sayHello() {
