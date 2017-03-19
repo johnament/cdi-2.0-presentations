@@ -2,6 +2,7 @@
   "name": "presentation-cdi-20-new-noteworthy",
   "version": "1.0.0",
   "dependencies": {},
+  "nw":"0.21.3",
   "devDependencies": {
     "bespoke": "^1.0.0",
     "bespoke-backdrop": "^1.0.0",
