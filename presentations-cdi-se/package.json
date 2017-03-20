@@ -2,6 +2,10 @@
   "name": "presentation-java-se-and-cdi-20",
   "version": "1.0.0",
   "dependencies": {},
+  "nw":"0.21.3",
+  "scripts":{
+    "install":"bower install"
+  },
   "devDependencies": {
     "bespoke": "^1.0.0",
     "bespoke-backdrop": "^1.0.0",
