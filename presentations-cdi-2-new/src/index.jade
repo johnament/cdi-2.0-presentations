@@ -17,18 +17,19 @@ html
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 CDI 2.0
-        h3 CDI 2.0 (JSR-365) has been in development for a few years now
-        h3 In depth information can be found at http://cdi-spec.org/
+        p CDI 2.0 (JSR-365) has been in development for a few years now
+        p In depth information can be found at
+        p.strong http://cdi-spec.org/
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Other Sessions
         h3 Stop by Thursday, 2:50 in Room 7
-        h3 How to use CDI 2.0 in a Java SE Environment
+        h3 How to use CDI 2.0 in <br/>a Java SE Environment
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Slide Materials
         h3 Available on my github - 
-        h3 https://github.com/johnament
+        p.strong https://github.com/johnament
         
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 The New
@@ -81,7 +82,7 @@ html
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Java 8 Alignment
-        h3 CDI 2.0 is heavily aligned to Java 8.  Many new features are based on Java 8 semantics, functional interfaces used heavily to write simple code, instances can be streamed.
+        p CDI 2.0 is heavily aligned to Java 8.  Many new features are based on Java 8 semantics, functional interfaces used heavily to write simple code, instances can be streamed.
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Java 8 Alignment
@@ -107,7 +108,13 @@ html
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Java 8 Alignment
         h3 Instance Enhancements
-        p As well as a positive isResolved method
+        p As well as a positive isResolvable method - no more of..
+        pre
+          code.language-javascript.
+            if(!instance.isAmbiguous() &&
+                !instance.isUnsatisfied())
+            //
+            if(instance.isResolvable())
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Java 8 Alignment
@@ -191,64 +198,54 @@ html
         
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Bean Discovery
-        h3 CDI's bean discovery has gone through some radical changes in its revisions
-        h3 CDI 1.0 required an empty/minimal beans.xml to be present for it to be considered.
+        p CDI's bean discovery has gone through some radical changes in its revisions
+        p CDI 1.0 required an empty/minimal beans.xml to be present for it to be considered.
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Bean Discovery
-        h3 Java EE 7 introduces CDI 1.1 and CDI always on
-        h3 CDI added a bean-discovery-mode to help developers control what was located
-        h3 Added support for all - every valid bean was created
-        h3 annotated - bean defining annotations were required - qualifiers weren't in this list
-        h3 none - turn off CDI for this archive
+        p Java EE 7 introduces CDI 1.1 and CDI always on
+        p CDI added a bean-discovery-mode to help developers control what was discovered
         
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Bean Discovery
-        h3 CDI 2.0 introduces two new concepts for bean discovery
-        h3 Trimmed archives (bean-discovery-mode=all, &lt;trim/&gt; tag) discovered all beans
-        h3 But removed classes that had no qualifiers, scopes, alternatives, decorators, etc
+        h3 Added support for 
+        p all - every valid bean was created
+        p annotated - bean defining annotations were required
+        p none - turn off CDI for this archive
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Bean Discovery
+        p CDI 2.0 introduces two new concepts for bean discovery
+        p Trimmed archives, discovered all beans but removed classes that had no qualifiers, scopes, alternatives, decorators, etc
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
-        h2 Bean Discovery for Java SE
-        h3 Java SE has its own rules around discovery - stop by on Thursday!
+        h2 Java SE
+        p Java SE has its own rules around discovery stop by on Thursday!
         
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Unmanaged Beans
-        h3 Sometimes you want to inject into a bean, but not actually inject that bean
+        p Sometimes you want to inject into a bean, <br/> but not actually inject that bean
         pre
           code.language-javascript.
-            Unmanaged&lt;MyBean&gt; unmanaged = new Unmanaged&lt;&gt;(MyBean.class);
-            UnmanagedInstance&lt;MyBean&gt; instance = unmanaged.newInstance();
-            MyBean myBean  = instance.produce().inject().postConstruct().get();
+            UnmanagedInstance&lt;MyBean&gt; instance = 
+              new Unmanaged&lt;&gt;(MyBean.class)
+              .newInstance();
+            MyBean myBean  = instance.produce()
+                .inject().postConstruct().get();
             // do some work with it
             instance.preDestroy().dispose();
           
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Unmanaged Beans
-        h3 While this isn't a lot of code, it adds extra boiler plate.  So you can have a one time..
-
-      section.emphatic-text(data-bespoke-backdrop='emphatic')
-        h2 Unmanaged Beans
-        pre
-          code.language-javascript.
-            public class Unmanageable&lt;T&gt; implements AutoCloseable{
-              private final Unmanaged.UnmanagedInstance&lt;T&gt; instance;
-              public Unmanageable(Class&lt;T&gt; clazz) {
-                this.instance = new Unmanaged&lt;T&gt;(clazz).newInstance()
-                        .produce().inject().postConstruct();
-              }
-              public T get() { return this.instance.get(); }
-              @Override public void close() {
-                this.instance.preDestroy().dispose();
-              }
-            }
+        p While this isn't a lot of code, it adds extra boiler plate.  So you can have a one time..
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Unmanaged Beans
         h3 Into a bit of syntactic sugar
         pre
           code.language-javascript.
-            try(Unmanageable&lt;SomeBean&gt; unmanageable = new Unmanageable&lt;&gt;(SomeBean.class)) {
+            try(Unmanageable&lt;SomeBean&gt; unmanageable =
+                new Unmanageable&lt;&gt;(SomeBean.class)) {
                 SomeBean bean = unmanageable.get();
             }
 
@@ -266,6 +263,8 @@ html
           li ProcessObserverMethod
           li AfterBeanDiscovery
           li AfterDeploymentValidation
-          
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Thanks & Questions  
         
     script(src='build/build.js')

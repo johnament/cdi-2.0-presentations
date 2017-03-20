@@ -20,6 +20,7 @@ public class BeanDiscoverer implements Extension {
     public static void main(String...args) {
         final SeContainer initialize = SeContainerInitializer.newInstance()
                 .initialize();
+        initialize.select(Producers.class).is
         final Producers producers = initialize.select(Producers.class).get();
         assert producers == null;
         initialize.close();
