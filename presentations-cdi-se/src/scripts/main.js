@@ -7,6 +7,7 @@ var bespoke = require('bespoke'),
   bullets = require('bespoke-bullets'),
   // backdrop = require('bespoke-backdrop'),
   scale = require('bespoke-scale'),
+  hash = require('bespoke-hash'),
   progress = require('bespoke-progress');
 
 // Bespoke.js
@@ -16,7 +17,7 @@ bespoke.from('article', [
   touch(),
   pdf(),
   bullets('li, .bullet'),
-  // backdrop(),
+  hash(),
   scale(),
   progress()
 ]);

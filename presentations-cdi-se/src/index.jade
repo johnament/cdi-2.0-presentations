@@ -15,21 +15,31 @@ html
         h1 Making the Most of Java SE with CDI 2.0
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
-        h2 Something something... something goes here
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a>
+        h4 Who am I?
+        p.small John D. Ament
+        p.small Principal Architect at Sparta Systems
+        p.small CDI Expert Group Member
+        p.small JMS Expert Group Member
+        p.small Apache DeltaSpike PMC
+        p.small Apache ActiveMQ Committer
+        p.small Hammock Project creator - CDI based Microservices
+        p.strong http://github.com/hammock-project
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Moving CDI Beyond EE
+        p CDI 2.0 introduced some basic support for Java SE
+        p We want your feedback!
+        p.strong http://cdi-spec.org/
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 SeContainerInitializer
-        h3 Ability to initialize a container based on your classpath
+        h3 Simple Bootstrapping!
         pre
           code.language-javascript.
-            try(SeContainer container = SeContainerInitializer
-                .newInstance()
-                .initialize()) {
-                  AppScopedBean appScopedBean = container
-                  .select(AppScopedBean.class)
-                  .get();
-            }
+            try(SeContainer container = 
+                  SeContainerInitializer
+                    .newInstance()
+                    .initialize()) { }
             
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 SeContainer
