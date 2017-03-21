@@ -8,9 +8,6 @@ import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.util.concurrent.CompletionStage;
 
-/**
- * Created by johnament on 3/6/17.
- */
 public class EventBootstrap {
     public static void main(String...args) throws Exception{
         try(SeContainer container = SeContainerInitializer.newInstance()

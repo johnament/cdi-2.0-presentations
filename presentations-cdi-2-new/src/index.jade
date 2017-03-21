@@ -31,6 +31,7 @@ html
         p CDI 2.0 (JSR-365) has been in development for a few years now
         p In depth information can be found at
         p.strong http://cdi-spec.org/
+        p The public review ballot just completed
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Other Sessions
@@ -79,7 +80,7 @@ html
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Event Enhancements
         h3 Asynchronous Events
-        p Async events don't support priority
+        p Async event observers don't support priority
         p They will be called asynchronously with other observer methods
         p Mileage varies depending on the type of executor in use
         p Likewise, watch out for mutable events
@@ -124,7 +125,7 @@ html
           code.language-javascript.
             if(!instance.isAmbiguous() &&
                 !instance.isUnsatisfied())
-            //
+            // instead we can do..
             if(instance.isResolvable())
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
@@ -133,17 +134,18 @@ html
         p CDI now supports repeating qualifiers
         p They act in an additive fashion
         p As a result, you need to use getAnnotations
+        p 
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 The Noteworthy
         p The Noteworthy:
-          ul
-            li Stereotypes
-            li Alternatives
-            li Decorators
-            li Bean Discovery
-            li Unmanaged Beans
-            li Portable Extensions
+        ul
+          li Stereotypes
+          li Alternatives
+          li Decorators
+          li Bean Discovery
+          li Unmanaged Beans
+          li Portable Extensions
                 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Stereotypes
@@ -210,11 +212,12 @@ html
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Bean Discovery
         p CDI's bean discovery has gone through some radical changes in its revisions
-        p CDI 1.0 required an empty/minimal beans.xml to be present for it to be considered.
+        p CDI 1.0 required an empty/minimal beans.xml to be present for it to be considered a bean archive.
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Bean Discovery
         p Java EE 7 introduces CDI 1.1 and CDI always on
+        p.small As well as CDI 1.2 to fix some issues
         p CDI added a bean-discovery-mode to help developers control what was discovered
         
       section.emphatic-text(data-bespoke-backdrop='emphatic')
@@ -248,7 +251,8 @@ html
           
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Unmanaged Beans
-        p While this isn't a lot of code, it adds extra boiler plate.  So you can have a one time..
+        p While this isn't a lot of code, it adds extra boiler plate.
+        p Internal utility library for the win! (this isn't npm though)
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Unmanaged Beans

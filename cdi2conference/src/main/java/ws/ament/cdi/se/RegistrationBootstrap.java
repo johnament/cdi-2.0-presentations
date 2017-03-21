@@ -6,9 +6,6 @@ import ws.ament.cdi.se.beans.RequestScopedBean;
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 
-/**
- * Created by johnament on 3/6/17.
- */
 public class RegistrationBootstrap {
     public static void main(String...args) {
         try(SeContainer container = SeContainerInitializer.newInstance()

@@ -8,9 +8,6 @@ import javax.enterprise.event.ObservesAsync;
 import javax.inject.Inject;
 import java.util.concurrent.ForkJoinPool;
 
-/**
- * Created by johnament on 3/8/17.
- */
 public class AsyncEvents {
     @Inject
     private Event<Pojo> pojoEvent;
