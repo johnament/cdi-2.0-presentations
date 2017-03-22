@@ -17,13 +17,13 @@ html
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h4 Who am I?
         p.small John D. Ament
-        p.small Principal Architect at Sparta Systems
+        p.small Architect at Sparta Systems
         p.small CDI Expert Group Member
         p.small JMS Expert Group Member
         p.small Apache DeltaSpike PMC
         p.small Apache ActiveMQ Committer
         p.small Hammock Project creator - CDI based Microservices
-        p.strong http://github.com/hammock-project
+        p.strong.small http://github.com/hammock-project
         
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Moving CDI Beyond EE
@@ -31,6 +31,11 @@ html
         p We want your feedback!
         p.strong http://cdi-spec.org/
 
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Slide Info
+        p Slide and code samples
+        p.strong.small https://github.com/johnament/cdi-2.0-presentations  
+        
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 SeContainerInitializer
         h3 Simple Bootstrapping!
@@ -69,12 +74,10 @@ html
         pre
           code.language-javascript.
             SeContainerInitializer
-              .newInstance()
-              .addExtensions()
+              .newInstance().addExtensions()
               .enableDecorators()
               .selectAlternativeStereotypes()
-              .selectAlternatives()
-              .addProperty()
+              .selectAlternatives().addProperty()
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2.bullet Request Context Management
@@ -88,12 +91,11 @@ html
         h4 Built in bean for starting and stopping request contexts
         pre
           code.language-javascript.
-            @Inject RequestContextController requestContextController;
-            
-            boolean started = requestContextController.activate();
-            
+            @Inject RequestContextController 
+                requestContextController;
+            boolean started = 
+                requestContextController.activate();
             // do some work
-            
             if(started) requestContextController.deactivate();
             
       section.emphatic-text(data-bespoke-backdrop='emphatic')
@@ -104,7 +106,6 @@ html
           code.language-javascript.
             @ActivateRequestContext
             public void doSomeWork() {
-            
             }
             
       section.emphatic-text(data-bespoke-backdrop='emphatic')
@@ -117,32 +118,20 @@ html
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2.bullet Threading and Events
         br
-        h4 Sync Events May need Request Scope to be Active
+        h4 Sync Events may need Request Scope to be Active
         pre
           code.language-javascript.
             @Inject Event<Pojo> pojoEvent;
             @ActivateRequestContext
             public void sender() {
-                pojoEvent.fire(new Pojo("pojo"));
+                pojoEvent.fire(pojo);
             }
-            
-            public void syncReceiver(@Observes Pojo pojo) {
-                
-            }
-            
+            void syncReceiver(@Observes Pojo pojo) { }
+
       section.emphatic-text(data-bespoke-backdrop='emphatic')
-        h2.bullet Threading and Events
-        br
-        h4 Async events allow custom executors
-        pre
-          code.language-javascript.
-            public void sender() {
-                pojoEvent.fireAsync(new Pojo("pojo"), 
-                  NotificationOptions.ofExecutor(new ForkJoinPool(size)));
-            }
-            
-            public void asyncReceiver(@ObservesAsync Pojo pojo) {
-        
-            }
+        h2.bullet Demo Time..
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2.bullet Thanks & Questions
 
     script(src='build/build.js')
