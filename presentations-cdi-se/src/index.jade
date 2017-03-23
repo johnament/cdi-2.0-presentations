@@ -128,7 +128,7 @@ html
         h4 Sync Events may need Request Scope to be Active
         pre
           code.language-javascript.
-            @Inject Event<Pojo> pojoEvent;
+            @Inject Event&lt;Pojo&gt; pojoEvent;
             @ActivateRequestContext
             public void sender() {
                 pojoEvent.fire(pojo);
