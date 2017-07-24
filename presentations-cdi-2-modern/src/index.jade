@@ -1,0 +1,157 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title CDI 2.0 Modernizing Java EE
+
+    link(rel='stylesheet', type='text/css', href='build/build.css')
+
+  body
+
+    article
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h1 CDI 2.0
+        h2 Modernizing Java EE Development
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Slide Materials
+        h3 Available on my github - 
+        h3 https://github.com/johnament
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 CDI 2.0
+        h3 CDI 2.0 (JSR-365) has been in development for a few years now
+        h3 In depth information can be found at http://cdi-spec.org/
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 What is CDI?
+        p Contexts & Dependency Injection for Java (JSR-365)
+        p The core dependency injection framework for Java EE
+        p 2.0 drops the "EE" part of the title, allowing the framework to be used in SE
+        p Two different implementations
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 The CDI Ecosystem
+        p Focused on a dependency injection specification
+        p Others can consume this specification to make it work within their products
+        p These products include...
+        p Multiple Open Source Software Foundations
+        p 50+ projects supporting CDI
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 The CDI Ecosystem
+        p The largest recent addition is Eclipse MicroProfile
+        p Designed to reinvent Java EE for MicroServices design patterns
+        p All specifications are taking a CDI-first approach
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 What's New?
+        p 109 Issues Resolved for 2.0!
+        p Java SE support
+        p Event Enhancements
+        p Java 8 Features
+        p Improvements to Bean Discovery
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 CDI, a Brief Introduction
+        p Started out as JBoss Seam, Dependency Injection that made JSF + EJB work better
+        p Then came the Web Beans specification
+        p Next had a bit of a rename and the AtInject spec
+        p So we've ended up with CDI
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 What is a Context?
+        p It's effectively the bean's lifecycle, what the visibility of a given instance is
+        p Better term than Stateless/Stateful session beans
+        p Normal Scoped beans - Request Scoped, Application Scoped, Session Scoped and Conversation Scoped
+        p Pseudo Scoped beans - Dependent and Singleton
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 On to some code..
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Java SE Support
+        p How to bootstrap within SE
+        p SE nuances
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Servlet Support
+        p Not specified, but both implementations work fine on servlet containers
+        p Gives a broader range of context support than in SE
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Event API
+        p In addition to the core DI features, CDI provides an Eventing API for loose coupling
+        p Events can be synchronous or asynchronous
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Programmatic Lookup
+        p Multiple approaches - Instance, CDI.current(), CreationalContext
+        p Have to be aware of Dependent scoped beans
+        p Able to also inject into an externally managed instance
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Stereotypes
+        p "Uber annotations" or "what fits into my domain" style annotations
+        p Improves reuse
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Alternatives
+        p Replacing a bean at runtime
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Decorators
+        p Alternatives with delegate pattern
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Interceptors/AOP
+        p Interceptor Bindings & Activation
+        p What can be intercepted?
+        p Programmatic binding of interceptors
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Events API
+        p Synchronous vs Asynchronous Events
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Firing Events
+        p You can do it with an injection point or programmatically with a BeanManager
+        p Qualifiers control who will receive it
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Observing Events
+        p Observer Methods allow you to receive an event
+        p Qualifiers control who will receive it
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Async Firing Events
+        p Managing Executors
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Observing Events
+        p Context Control/Propagation
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 CDI 2 & MicroProfile
+        p CDI is just about dependency injection & extensions
+        p MicroProfile is about building cloud native microservices
+        p Using Java EE as a base
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 MicroProfile 1.0
+        p CDI 1.2 + JAX-RS 2.0 + JSON-P
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 MicroProfile 1.0
+        p CDI 1.2 + JAX-RS 2.0 + JSON-P
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 MicroProfile 1.1 (Almost Out!)
+        p Adds a configuration spec
+
+
+
+
+script(src='build/build.js')
