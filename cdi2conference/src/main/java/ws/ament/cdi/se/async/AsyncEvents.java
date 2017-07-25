@@ -12,11 +12,11 @@ public class AsyncEvents {
     @Inject
     private Event<Pojo> pojoEvent;
 
-    public void sender() {
-        pojoEvent.fireAsync(new Pojo("pojo"), NotificationOptions.ofExecutor(new ForkJoinPool(2)));
+    public void sender(String name) {
+        pojoEvent.fireAsync(new Pojo(name), NotificationOptions.ofExecutor(new ForkJoinPool(2)));
     }
 
     public void asyncReceiver(@ObservesAsync Pojo pojo) {
-
+        System.out.println("On thread "+Thread.currentThread().getName()+" received pojo "+pojo.showName());
     }
 }
