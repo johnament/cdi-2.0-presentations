@@ -2,6 +2,7 @@ package ws.ament.cdi.se.netty;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -20,7 +21,7 @@ public class ServerInitializer {
     private static final int INET_PORT = 8765;
 
     @Inject
-    private ChannelReadHandler channelReadHandler;
+    private ChannelHandler channelHandler;
 
     public void onStartUp(@Observes @Priority(Interceptor.Priority.APPLICATION - 400)
                           @Initialized(ApplicationScoped.class) Object obj) throws Exception{
@@ -33,7 +34,7 @@ public class ServerInitializer {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
-            b.childHandler(channelReadHandler);
+            b.childHandler(channelHandler);
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 128)
