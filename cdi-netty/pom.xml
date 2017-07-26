@@ -4,15 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ws.ament</groupId>
-    <artifactId>cdi-2-conference</artifactId>
+    <groupId>ws.ament.cdi2</groupId>
+    <artifactId>cdi-netty</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <weld.version>3.0.0.Final</weld.version>
         <geronimo-config.version>1.0-SNAPSHOT</geronimo-config.version>
+        <netty-all.version>4.1.13.Final</netty-all.version>
         <log4j.version>2.8.2</log4j.version>
         <projectreactor.version>3.0.7.RELEASE</projectreactor.version>
     </properties>
@@ -34,6 +34,11 @@
             <version>${log4j.version}</version>
         </dependency>
         <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty-all.version}</version>
+        </dependency>
+        <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
             <version>${projectreactor.version}</version>
@@ -44,4 +49,5 @@
             <version>${geronimo-config.version}</version>
         </dependency>
     </dependencies>
+
 </project>
