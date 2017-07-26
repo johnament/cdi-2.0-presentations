@@ -14,11 +14,11 @@ public class AppScopedBean {
     @Inject
     private Instance<RequestScopedBean> instance;
 
-    public void boop() {
+    public void executeFirst() {
         instance
                 .stream()
                 .findFirst()
-                .ifPresent(bean -> bean.sayHello());
+                .ifPresent(RequestScopedBean::sayHello);
     }
 
     public String sayHello() {
