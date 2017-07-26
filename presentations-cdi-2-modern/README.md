@@ -1,6 +1,9 @@
 # CDI 2.0 Modernizing Java EE
 > A [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation, built with [generator-bespoke](https://github.com/markdalgleish/generator-bespoke)
+
+
 ![Screenshot of landing page](https://github.com/johnament/cdi-2.0-presentations/raw/master/presentations-cdi-2-modern/CDI2Modern.png =500px)
+
 ## View slides locally
 
 First, ensure you have the following installed:
