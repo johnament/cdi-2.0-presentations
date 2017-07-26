@@ -1,9 +1,7 @@
 package ws.ament.cdi.se.events;
 
-import javax.enterprise.event.Event;
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
-import java.util.concurrent.CompletionStage;
 
 public class ReactiveBootstrap {
     public static void main(String...args) throws Exception{
