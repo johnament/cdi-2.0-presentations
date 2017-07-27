@@ -13,7 +13,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Initialized;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-import javax.interceptor.Interceptor;
 
 @ApplicationScoped
 public class ServerInitializer {
@@ -23,7 +22,7 @@ public class ServerInitializer {
     @Inject
     private ChannelHandler channelHandler;
 
-    public void onStartUp(@Observes @Priority(Interceptor.Priority.APPLICATION - 400)
+    public void onStartUp(@Observes @Priority(1)
                           @Initialized(ApplicationScoped.class) Object obj) throws Exception{
         System.out.println("Container started with "+obj);
         startServer();

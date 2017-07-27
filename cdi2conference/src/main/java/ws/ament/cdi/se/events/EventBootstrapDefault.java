@@ -13,8 +13,9 @@ public class EventBootstrapDefault {
                 .initialize()) {
             Event<Object> event = container.getBeanManager().getEvent();
             CompletionStage<Pojo> completionStage = event.fireAsync(new Pojo("this is asynchronous"));
-            completionStage.whenCompleteAsync((pojo, throwable) -> event.fire(new Pojo(pojo.showName() + ", and now this is synchronous")));
-            Thread.sleep(500L);
+            completionStage.whenCompleteAsync((pojo, throwable) -> event.fire(
+                    new Pojo(pojo.showName() + ", and now this is synchronous")));
+            Thread.sleep(2000L);
         }
     }
 }

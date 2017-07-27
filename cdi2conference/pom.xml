@@ -14,9 +14,20 @@
         <weld.version>3.0.0.Final</weld.version>
         <geronimo-config.version>1.0-SNAPSHOT</geronimo-config.version>
         <projectreactor.version>3.0.7.RELEASE</projectreactor.version>
+        <log4j.version>2.8.2</log4j.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.jboss.weld.se</groupId>
             <artifactId>weld-se-core</artifactId>
